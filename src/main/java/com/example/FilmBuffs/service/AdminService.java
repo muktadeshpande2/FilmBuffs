@@ -1,7 +1,7 @@
 package com.example.FilmBuffs.service;
 
-import com.example.FilmBuffs.dao.FilmRepository;
-import com.example.FilmBuffs.model.Film;
+import com.example.FilmBuffs.dao.AdminRepository;
+import com.example.FilmBuffs.model.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,13 +9,9 @@ import org.springframework.stereotype.Service;
 public class AdminService {
 
     @Autowired
-    FilmRepository filmRepository;
+    AdminRepository adminRepository;
 
-    public void addOrUpdateFilm(Film film) {
-        filmRepository.save(film);
-    }
-
-    public void deleteFilm(Film film) {
-        filmRepository.deleteById(film.getId());
+    public void createOrUpdateAdmin(Admin admin) {
+        adminRepository.save(admin);
     }
 }
