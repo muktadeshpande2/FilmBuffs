@@ -21,7 +21,7 @@ public class Review {
     @Id
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Integer id;
 
     private String filmTitle;
 
@@ -33,6 +33,11 @@ public class Review {
     @JoinColumn(name="film_id", nullable=false)
     @JsonIgnore
     private Film film;
+
+    @ManyToOne
+    @JoinColumn(name = "critic_id", nullable = false)
+    @JsonIgnore
+    private Critic critic;
 
     @CreationTimestamp
     private Date createdOn;
