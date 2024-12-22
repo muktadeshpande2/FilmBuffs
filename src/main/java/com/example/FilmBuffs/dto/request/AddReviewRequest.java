@@ -13,7 +13,7 @@ import lombok.*;
 public class AddReviewRequest {
 
     @NotNull
-    private Long filmId;
+    private Integer filmId;
 
     @NotBlank
     private String review;

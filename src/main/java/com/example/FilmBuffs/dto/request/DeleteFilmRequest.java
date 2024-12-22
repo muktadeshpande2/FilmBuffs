@@ -10,8 +10,7 @@ import lombok.*;
 @Builder
 public class DeleteFilmRequest {
 
-    private Long filmId;
-
+    private Integer filmId;
 
     public Film toFilm() {
         return Film.builder()
