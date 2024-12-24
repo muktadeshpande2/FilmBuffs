@@ -5,8 +5,9 @@ import com.example.FilmBuffs.dao.ReviewRepository;
 import com.example.FilmBuffs.model.Film;
 import com.example.FilmBuffs.model.Review;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-
+@Service
 public class ReviewService {
 
     @Autowired
@@ -26,11 +27,11 @@ public class ReviewService {
         }
     }
 
-    public Review findReview(Long reviewId) {
+    public Review findReview(Integer reviewId) {
         return reviewRepository.findById(reviewId).orElse(null);
     }
 
-    public void deleteReview(Long reviewId) {
+    public void deleteReview(Integer reviewId) {
         Review review = reviewRepository.findById(reviewId).orElse(null);
 
         assert review != null;
