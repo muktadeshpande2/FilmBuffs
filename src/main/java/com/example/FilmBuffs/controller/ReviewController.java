@@ -28,14 +28,14 @@ public class ReviewController {
     }
 
 
-    @GetMapping("/find")
-    public ReviewResponse findReview(@RequestParam Long reviewId) {
+    @GetMapping("/fetch")
+    public ReviewResponse findReview(@RequestParam Integer reviewId) {
         return reviewService.findReview(reviewId).toReviewResponse();
 
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<String> deleteReview(@RequestParam Long reviewId) {
+    public ResponseEntity<String> deleteReview(@RequestParam Integer reviewId) {
         reviewService.deleteReview(reviewId);
 
         return ResponseEntity
