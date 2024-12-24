@@ -1,7 +1,6 @@
 package com.example.FilmBuffs.controller;
 
-import com.example.FilmBuffs.dto.request.DeleteFilmRequest;
-import com.example.FilmBuffs.dto.request.AddFilmRequest;
+import com.example.FilmBuffs.dto.request.CreateAdminRequest;
 import com.example.FilmBuffs.service.AdminService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,23 +14,21 @@ public class AdminController {
 
     @Autowired
     AdminService adminService;
-    //add, update, delete api
 
-    @PostMapping("/film/add")
-    public ResponseEntity<String> addOrUpdateFilm(@RequestBody @Valid AddFilmRequest addFilmRequest) {
-         adminService.addOrUpdateFilm(addFilmRequest.toFilm());
+    @PostMapping("/create")
+    public ResponseEntity<String>createOrUpdateAdmin(@RequestBody @Valid CreateAdminRequest createAdminRequest) {
 
-         return ResponseEntity
-                 .status(HttpStatus.CREATED)
-                 .body("Film Added Successfully");
-    }
+        try{
+            adminService.createOrUpdateAdmin(createAdminRequest.toAdmin());
 
-    @DeleteMapping("/film/delete")
-    public ResponseEntity<String> deleteFilm(@RequestBody @Valid DeleteFilmRequest deleteFilmRequest) {
-        adminService.deleteFilm(deleteFilmRequest.toFilm());
+            return ResponseEntity
+                    .status(HttpStatus.CREATED)
+                    .body("Admin got created successfully");
 
-        return ResponseEntity
-                .status(HttpStatus.OK)
-                .body("Film Deleted Successfully");
+        } catch(Exception e) {
+            return ResponseEntity
+                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(e.getMessage());
+        }
     }
 }
